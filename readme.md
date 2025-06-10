@@ -1,4 +1,4 @@
-# 📡 Robot Framework Wi-Fi Testing (Raspberry Pi / Linux / macOS)
+# 📡 Robot Framework Wi-Fi Testing (Raspberry Pi / Linux)
 
 This project performs automation testing using **Robot Framework** on Linux-based systems such as **Raspberry Pi** 
 
