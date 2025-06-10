@@ -31,6 +31,13 @@ def notify_robot_failures(output_xml_path):
     result.suite.visit(ResultVisitor())
 
     failed_tests = []
+
+    # Check root suite tests
+    for test in result.suite.tests:
+        if test.status == 'FAIL':
+            failed_tests.append(f"{result.suite.name} -> {test.name}: {test.message}")
+
+    # Check nested suites
     for suite in result.suite.suites:
         for test in suite.tests:
             if test.status == 'FAIL':
@@ -45,8 +52,7 @@ def notify_robot_failures(output_xml_path):
 
     try:
         loop = asyncio.get_running_loop()
-        # If already in an event loop, create a task
         asyncio.create_task(send_telegram_message(message))
     except RuntimeError:
-        # No event loop running, safe to use asyncio.run
         asyncio.run(send_telegram_message(message))
+
