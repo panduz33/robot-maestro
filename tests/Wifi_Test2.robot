@@ -1,6 +1,6 @@
 *** Settings ***
-Resource  ./resources/wifi_keywords.robot
-Library   ./load_env.py
+Resource  ../resources/wifi_keywords.robot
+Library   ../load_env.py
 
 *** Test Cases ***
 Basic Wifi Functionality Test

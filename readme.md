@@ -72,6 +72,22 @@ robot tests/your_test.robot
 
 ---
 
+### 7. **Check The Results**
+After running the tests, you can find the results in the `report.html` file.
+You can directly open it in your browser.
+Or if you are accessing the Raspberry Pi remotely and on the same network, you can perform this request
+
+```bash
+python3 -m http.server 8080
+```
+
+Then, you can access the report by going to `URL_ADDRESS-raspberry-pi-ip>:8080/report.html` in your web browser.
+for example : `http://raspberrypi.local:8080/`
+
+and open the `report.html` file.
+
+---
+
 ## 📂 Project Structure
 
 ```
@@ -83,8 +99,12 @@ robot tests/your_test.robot
 ├── load_env.py        # Python helper to load .env
 ├── tests/
 │   └── wifi_test.robot
+│   └── wifi_test2.robot
+│   └── .....robot
 ├── resources/
 │   └── wifi_keywords.robot
+│── report.html
+└── ...
 ```
 
 ---
