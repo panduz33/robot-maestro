@@ -1,28 +1,23 @@
 *** Settings ***
-Library           String
-Library           Process
+Library           ../load_env.py
+Resource          ../resources/wifi_keywords.robot
 
 *** Test Cases ***
+
 Check if Wifi Module is preset
-    ${result}=  Run Process  networksetup   -listallhardwareports  stdout=PIPE
-    ${output}=  Set Variable  ${result.stdout}
-    Log To Console  ${output}
-    Should Contain  ${output}  Wi-Fi
+    Check Wifi Module Exists
 
 Check if Wifi Module is turned on
-    ${result}=  Run Process  networksetup   -getairportpower  en0  stdout=PIPE
-    ${output}=  Set Variable  ${result.stdout}
-    Log To Console  ${output}
-    Should Contain  ${output}  On
+    Check Wifi Interface UP
 
-Check if Wifi Module is connected to a Wi-Fi Network
-    ${result}=  Run Process  networksetup   -getairportnetwork  en0  stdout=PIPE
-    ${output}=  Set Variable  ${result.stdout}
-    Log To Console  ${output}
-    Should Not Contain  ${output}  You are not associated with an AirPort network.
+Check if Wifi Module is able to scan Wi-Fi Network
+    Scan Available Networks
+
+Check if Wifi Module is able to connect to Wi-Fi Network
+    ${env}=  Load Environment Variables
+    ${SSID}=  Set Variable  ${env['SSID']}
+    ${WIFI_PASSWORD}=  Set Variable  ${env['WIFI_PASSWORD']}
+    Connect To Wifi    ${SSID}    ${WIFI_PASSWORD}
 
 Verify Internet is working
-    ${result}=  Run Process  ping  -c 5  www.google.com  stdout=PIPE
-    ${output}=  Set Variable  ${result.stdout}
-    Log To Console  ${output}
-    Should Contain  ${output}  5 packets transmitted, 5 packets received
+    Ping Internet

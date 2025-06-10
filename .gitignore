@@ -10,6 +10,7 @@ output.xml
 log.html
 report.html
 debug.log
+results/
 
 # Env Files
 .env
