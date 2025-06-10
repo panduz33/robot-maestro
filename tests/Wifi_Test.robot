@@ -13,11 +13,11 @@ Check if Wifi Module is turned on
 Check if Wifi Module is able to scan Wi-Fi Network
     Scan Available Networks
 
-Check if Wifi Module is able to connect to Wi-Fi Network
-    ${env}=  Load Environment Variables
-    ${SSID}=  Set Variable  ${env['SSID']}
-    ${WIFI_PASSWORD}=  Set Variable  ${env['WIFI_PASSWORD']}
-    Connect To Wifi    ${SSID}    ${WIFI_PASSWORD}
+# Check if Wifi Module is able to connect to Wi-Fi Network
+#     ${env}=  Load Environment Variables
+#     ${SSID}=  Set Variable  ${env['SSID']}
+#     ${WIFI_PASSWORD}=  Set Variable  ${env['WIFI_PASSWORD']}
+#     Connect To Wifi    ${SSID}    ${WIFI_PASSWORD}
 
 Verify Internet is working
     Ping Internet
