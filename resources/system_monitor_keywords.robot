@@ -37,11 +37,11 @@ Get Swap Usage
     RETURN    ${swap}
 
 Find Suspicious Processes
-    ${count}=    Evaluate    len([p for p in psutil.process_iter(['cpu_percent']) if p.info['cpu_percent'] > 90])    modules=psutil
+    ${count}=    Evaluate    len([p for p in psutil.process_iter() if p.cpu_percent(interval=0.1) > 90])    modules=psutil
     RETURN    ${count}
 
 Get Uptime Hours
-    ${uptime}=    Evaluate    (psutil.boot_time())    modules=psutil
+    ${uptime}=    Evaluate    psutil.boot_time()    modules=psutil
     ${now}=    Evaluate    __import__('time').time()
     ${uptime_hours}=    Evaluate    (${now} - ${uptime}) / 3600
     RETURN    ${uptime_hours}

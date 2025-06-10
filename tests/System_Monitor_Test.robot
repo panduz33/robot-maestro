@@ -1,5 +1,5 @@
 *** Settings ***
-Resource    system_monitor_keywords.robot
+Resource    ../resources/system_monitor_keywords.robot
 
 *** Variables ***
 ${CPU_THRESHOLD}        85
