@@ -8,7 +8,6 @@ Basic Wifi Functionality Test
     ${SSID}=  Set Variable  ${env['SSID']}
     ${WIFI_PASSWORD}=  Set Variable  ${env['WIFI_PASSWORD']}
     ${EXPECTED_SSID}=  Set Variable  ${env['EXPECTED_SSID']}
-    Log To Console  ${SSID}
     Check Wifi Module Exists
     Check Wifi Interface UP
     Scan Available Networks
