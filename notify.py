@@ -52,7 +52,7 @@ async def retry_send_telegram_message(bot, message, hostname, ip_address, start_
             await asyncio.sleep(30)
 
 
-def notify_robot_failures(output_xml_path):
+def notify_robot_failures(output_xml_path, source="unknown"):
     result = ExecutionResult(output_xml_path)
     result.suite.visit(ResultVisitor())
 
@@ -75,14 +75,14 @@ def notify_robot_failures(output_xml_path):
     if failed_tests:
         message_body = "\n".join(failed_tests)
         message = (
-            f"❌ *Robot Test Failed!*\n"
+            f"❌ [Runner : {source}] - *Robot Test Failed!*\n"
             f"Device: {hostname} ({ip_address})\n"
             f"Start Time: {start_time}\n\n"
             f"Failures:\n{message_body}"
         )
     else:
         message = (
-            f"✅ *All Robot Tests Passed*\n"
+            f"✅ [Runner : {source}] - *All Robot Tests Passed*\n"
             f"Device: {hostname} ({ip_address})\n"
             f"Start Time: {start_time}"
         )

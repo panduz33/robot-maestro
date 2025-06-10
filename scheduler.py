@@ -22,7 +22,7 @@ def run_robot_tests(test_targets):
     print(f"[INFO] Test completed. Results saved in {results_dir}\n")
 
     output_xml_path = os.path.join(results_dir, "output.xml")
-    notify_robot_failures(output_xml_path)  # No async issues here!
+    notify_robot_failures(output_xml_path, "SCHEDULER")  # No async issues here!
 
 def run_periodically(test_targets, interval_minutes=60):
     print(f"[INFO] Scheduling tests: {test_targets} every {interval_minutes} minute(s).")
