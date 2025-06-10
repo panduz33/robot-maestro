@@ -16,7 +16,8 @@ Get RAM Usage
 
 Get Temperature
     ${temp_out}=    Run Process    vcgencmd measure_temp    shell=True
-    ${temp}=    Evaluate    float('${temp_out.stdout}'.split('=')[1].split("'")[0])
+    ${output}=    Set Variable    ${temp_out.stdout.strip()}
+    ${temp}=    Evaluate    float("${output}".split('=')[1].split("'")[0])
     RETURN    ${temp}
 
 Get Disk Usage
