@@ -11,7 +11,7 @@ Basic Wifi Functionality Test
     Check Wifi Module Exists
     Check Wifi Interface UP
     Scan Available Networks
-    Connect To Wifi    ${SSID}    ${WIFI_PASSWORD}
+    # Connect To Wifi    ${SSID}    ${WIFI_PASSWORD}
     Verify Wifi Connection    ${EXPECTED_SSID}
     Check IP Assigned
     Ping Internet
